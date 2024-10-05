@@ -1,0 +1,26 @@
+# Ignore artifacts:
+node_modules
+build
+dist
+ios
+android
+
+# Ignore package lock files:
+package-lock.json
+yarn.lock
+
+# Ignore environment files:
+.env
+
+# Ignore Expo directories:
+.expo
+.expo-shared
+
+# Ignore assets or images:
+assets/
+
+# Ignore all minified files:
+*.min.js
+
+# Ignore coverage reports:
+coverage/
