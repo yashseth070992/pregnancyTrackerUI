@@ -50,7 +50,7 @@ const RecommendationList = () => {
   return (
     <View style={globalStyles.container}>
       <Text style={globalStyles.headingCentered}>Recommended Products</Text>
-      {/* Use FlatList alone for scrolling */}
+      {/* FlatList used to render product recommendations */}
       <FlatList
         data={products}
         keyExtractor={(item) => item.id}
