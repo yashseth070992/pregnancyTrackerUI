@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 import { colors } from './theme'; // Import the theme file
 
 export const globalStyles = StyleSheet.create({
-  // General Layout Styles
   container: {
     flex: 1,
     paddingHorizontal: 16,
