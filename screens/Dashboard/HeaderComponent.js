@@ -12,10 +12,15 @@ const HeaderComponent = ({ currentWeek, message, dateRange }) => {
         <Text style={styles.dateRange}>Oct 04 – Oct 10</Text>
       </View>
 
-      <Svg height="180" width="100%" viewBox="0 0 1440 320" style={styles.wavyBackground}>
-        <Path 
+      <Svg
+        height="180"
+        width="100%"
+        viewBox="0 0 1440 320"
+        style={styles.wavyBackground}
+      >
+        <Path
           fill={colors.backgroundLight} // Use the theme background color
-          d="M0,128L60,133.3C120,139,240,149,360,138.7C480,128,600,96,720,101.3C840,107,960,149,1080,154.7C1200,160,1320,128,1380,112L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" 
+          d="M0,128L60,133.3C120,139,240,149,360,138.7C480,128,600,96,720,101.3C840,107,960,149,1080,154.7C1200,160,1320,128,1380,112L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
         />
       </Svg>
 
@@ -44,7 +49,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   pregnancyText: {
-    fontSize: 24, 
+    fontSize: 24,
     fontWeight: 'bold',
     color: colors.textPrimary, // Use primary text color from theme
   },
@@ -54,7 +59,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   messageContainer: {
-    backgroundColor: 'transparent', 
+    backgroundColor: 'transparent',
     alignItems: 'center',
     zIndex: 1, // Ensure it's above the wave
     marginTop: 10, // Space it closer to the wave

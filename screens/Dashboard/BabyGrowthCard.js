@@ -1,19 +1,12 @@
+// BabyGrowthCard.js
+
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { globalStyles } from '../../styles/globalStyles'; // Assuming globalStyles is available
 import Ionicons from '@expo/vector-icons/Ionicons'; // Import Ionicons
+import { babyData } from './data/babyGrowthData'; // Import the baby growth data
 
 const BabyGrowthCard = ({ week }) => {
-  // Data for baby growth could be fetched or defined here.
-  const babyData = {
-    4: {
-      size: 'Poppy Seed',
-      growthDetail: 'Your baby is starting to form organs.',
-    },
-    5: { size: 'Sesame Seed', growthDetail: 'The heart is beginning to beat!' },
-    // ... other weeks
-  };
-
   const data = babyData[week] || babyData[4]; // Default to week 4 if data for the week is not available
 
   return (

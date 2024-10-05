@@ -15,20 +15,20 @@ const Dashboard = ({ currentWeek }) => {
     <FlatList
       data={data}
       keyExtractor={(item) => item.key}
-      ListHeaderComponent={(
+      ListHeaderComponent={
         <>
-         <HeaderComponent 
-        currentWeek={currentWeek}
-        dateRange="Oct 04 - Oct 10"
-        message="Cozy times ahead 😊" 
-      />
+          <HeaderComponent
+            currentWeek={currentWeek}
+            dateRange="Oct 04 - Oct 10"
+            message="Cozy times ahead 😊"
+          />
 
           <BabyGrowthCard week={currentWeek} />
           <MotherSymptoms week={currentWeek} />
           <ThingsToDo week={currentWeek} />
           <Celebration week={currentWeek} />
         </>
-      )}
+      }
       renderItem={() => <RecommendationList />}
       ListFooterComponent={<DailyReads week={currentWeek} />}
     />

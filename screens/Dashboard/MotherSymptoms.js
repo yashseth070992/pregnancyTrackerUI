@@ -1,15 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { globalStyles } from '../../styles/globalStyles';
-
+import { symptomsData } from './data/symptomsData';
 const MotherSymptoms = ({ week }) => {
-  // Data for mother's symptoms per week
-  const symptomsData = {
-    4: ['Fatigue', 'Morning sickness', 'Frequent urination'],
-    5: ['Nausea', 'Breast tenderness', 'Mood swings'],
-    // ... other weeks
-  };
-
   const symptoms = symptomsData[week] || symptomsData[4];
 
   return (
