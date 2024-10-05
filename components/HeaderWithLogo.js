@@ -4,7 +4,7 @@ import { globalStyles } from '../styles/globalStyles';
 
 const HeaderWithLogo = ({ heading }) => {
   return (
-    <View style={globalStyles.headerContainer}>
+    <View style={globalStyles.customHeaderContainer}>
       {/* Logo */}
       <Image source={require('../assets/logo.png')} style={globalStyles.logo} />
 

@@ -7,6 +7,7 @@ import Celebration from './Celebration';
 import DailyReads from './DailyReads';
 import RecommendationList from './RecommendationList';
 import HeaderComponent from './HeaderComponent'; // Import the new header component
+import { globalStyles } from '../../styles/globalStyles';
 
 const Dashboard = ({ currentWeek }) => {
   const data = [{ key: 'recommendationList' }]; // Placeholder data for FlatList
@@ -14,6 +15,7 @@ const Dashboard = ({ currentWeek }) => {
   return (
     <FlatList
       data={data}
+      style={globalStyles.container}
       keyExtractor={(item) => item.key}
       ListHeaderComponent={
         <>

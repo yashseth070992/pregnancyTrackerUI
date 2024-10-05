@@ -8,27 +8,18 @@ export const globalStyles = StyleSheet.create({
     paddingVertical: 50,
     backgroundColor: colors.backgroundLight, // Use background color from theme
   },
-  centeredContainer: {
-    height: '33%', // Take up 33% of the screen height
-    justifyContent: 'center', // Vertically center content
-    alignItems: 'center', // Horizontally center content
-    backgroundColor: colors.backgroundLight, // Use background color from theme
-    marginTop: 20, // Optional: add margin if you want to push it down
+  
+  // Paper container for wrapping content
+  paperContainer: {
+    padding: 20,
+    borderRadius: 15,
+    backgroundColor: colors.backgroundLight, // Paper background
+    elevation: 4, // Adds shadow and depth effect
   },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  column: {
-    flexDirection: 'column',
-  },
-
-  // New styles for header and logo
-  headerContainer: {
+  customHeaderContainer: {
     alignItems: 'center', // Center items horizontally
     marginBottom: 20, // Add space below the header
-  },
+},
   logo: {
     width: 120,
     height: 120,
@@ -39,6 +30,82 @@ export const globalStyles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.textPrimary, // Primary text color from theme
     textAlign: 'center',
+  },
+
+  // Header Component Styles
+  headerContainer: {
+    flexDirection: 'row', // Align icons and content in a row
+    justifyContent: 'space-between', // Icons on both sides, content in the center
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: colors.buttonPrimary,
+    color:colors.buttonTextPrimary,
+    borderRadius: 15,
+    shadowColor: colors.shadowColor,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    elevation: 4,
+  },
+  
+  card: {
+    backgroundColor: colors.modalBackground, // White card background
+    borderRadius: 10,
+    padding: 16,
+    marginBottom: 16,
+    shadowColor: colors.shadowColor, // Shadow color from theme
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+
+  // Text styles
+  pregnancyText: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: colors.textPrimary,
+    textAlign: 'center',
+  },
+  dateRange: {
+    fontSize: 16,
+    color: colors.accentColor,
+    marginTop: 5,
+    textAlign: 'center',
+  },
+  messageText: {
+    fontSize: 18,
+    color: colors.textPrimary,
+    textAlign: 'center',
+    marginBottom: 5,
+  },
+  subText: {
+    fontSize: 14,
+    color: colors.textSecondary,
+    textAlign: 'center',
+  },
+
+  // Center content container
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 10, // Padding between icons and text content
+  },
+
+  // Styles for the left and right icons
+  iconLeft: {
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  iconRight: {
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  iconColor: {
+    color: colors.buttonTextPrimary,
   },
 
   // Typography
@@ -167,30 +234,6 @@ export const globalStyles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 5,
     textDecorationLine: 'underline',
-  },
-
-  // Cards
-  card: {
-    backgroundColor: colors.modalBackground, // White card background
-    borderRadius: 10,
-    padding: 16,
-    marginBottom: 16,
-    shadowColor: colors.shadowColor, // Shadow color from theme
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: colors.textPrimary, // Primary text color for card title
-    marginBottom: 8,
-  },
-  cardText: {
-    fontSize: 16,
-    color: colors.textSecondary, // Secondary text color for card content
-    marginBottom: 12,
   },
 
   // Modals
