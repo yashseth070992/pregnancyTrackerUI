@@ -37,9 +37,8 @@ export const globalStyles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.textPrimary, // Primary text color from theme
     textAlign: 'center',
+    marginBottom: 10, // Add space between heading and icon
   },
-
-  // Header Component Styles
   headerContainer: {
     flexDirection: 'row', // Align icons and content in a row
     justifyContent: 'space-between', // Icons on both sides, content in the center
@@ -140,8 +139,15 @@ export const globalStyles = StyleSheet.create({
   },
   paragraph: {
     fontSize: 16,
-    color: colors.textPrimary, // Secondary text color from theme
+    color: colors.textPrimary, // Primary text color from theme
     lineHeight: 24,
+    textAlign: 'center', // Center the text
+    marginBottom: 12, // Add space between the growth detail and the length/weight
+  },
+  infoContainer: {
+    flexDirection: 'row', // Align length and weight side by side
+    justifyContent: 'space-between',
+    marginBottom: 12,
   },
   smallText: {
     fontSize: 14,
@@ -232,6 +238,10 @@ export const globalStyles = StyleSheet.create({
   icon: {
     position: 'absolute',
     right: 10, // Position the icon inside the input
+  },
+  iconCenter: {
+    alignSelf: 'center', // Center the icon
+    marginBottom: 16, // Add space between icon and text below
   },
 
   // Links and Footer

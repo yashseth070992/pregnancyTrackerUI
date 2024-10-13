@@ -13,26 +13,16 @@ const BabyGrowthCard = ({ week }) => {
       <Text style={globalStyles.cardHeadingCentered}>
         Baby Size: {data.size}
       </Text>
-
-      {/* Icon below heading */}
       <Ionicons
         name="ice-cream-outline"
         size={60}
-        color="#4CAF50"
-        style={globalStyles.icon} // Reused icon styling from globalStyles
+        style={globalStyles.iconCenter}
       />
-
-      {/* Baby Growth Detail */}
-      <Text style={globalStyles.paragraph}>{data.growthDetail}</Text>
-
-      {/* Baby Length and Weight */}
       <View style={globalStyles.infoContainer}>
         <Text style={globalStyles.smallText}>Length: {data.length}</Text>
         <Text style={globalStyles.smallText}>Weight: {data.weight}</Text>
       </View>
-
-      {/* Optional Image */}
-      {data.image && <Image source={data.image} style={globalStyles.image} />}
+      <Text style={globalStyles.paragraph}>{data.growthDetail}</Text>
     </View>
   );
 };
