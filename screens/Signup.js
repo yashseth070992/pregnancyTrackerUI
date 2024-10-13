@@ -9,16 +9,25 @@ import { Button } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 import { globalStyles } from '../styles/globalStyles';
 import HeaderWithLogo from '../components/HeaderWithLogo';
-import Toast from 'react-native-toast-message'; // Import toast component
+import Toast from 'react-native-toast-message';
 
-const Login = ({ navigation }) => {
+const Signup = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = async () => {
+  const handleSignup = async () => {
+    if (password !== confirmPassword) {
+      Toast.show({
+        type: 'error',
+        text1: 'Passwords do not match!',
+      });
+      return;
+    }
+
     try {
-      const response = await fetch('https://pregnancytracker-438514.el.r.appspot.com/login', {
+      const response = await fetch('https://pregnancytracker-438514.el.r.appspot.com/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,13 +40,13 @@ const Login = ({ navigation }) => {
       if (response.ok) {
         Toast.show({
           type: 'success',
-          text1: 'Login successful!',
+          text1: 'Signup successful!',
         });
-        navigation.navigate('Dashboard');
+        navigation.navigate('Login');
       } else {
         Toast.show({
           type: 'error',
-          text1: result.message || 'Login failed',
+          text1: result.message || 'Signup failed',
         });
       }
     } catch (error) {
@@ -50,11 +59,7 @@ const Login = ({ navigation }) => {
 
   return (
     <View style={globalStyles.container}>
-      <HeaderWithLogo heading="Welcome back!" />
-
-      <Text style={globalStyles.paragraph}>
-        Log in with your BabyCentre account
-      </Text>
+      <HeaderWithLogo heading="Create your account" />
 
       <TextInput
         style={globalStyles.input}
@@ -86,29 +91,27 @@ const Login = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
+      <TextInput
+        style={globalStyles.input}
+        placeholder="Confirm Password"
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
+        secureTextEntry={!showPassword}
+        autoCapitalize="none"
+      />
+
       <Button
         mode="contained"
-        onPress={handleLogin}
+        onPress={handleSignup}
         style={globalStyles.buttonPrimary}
         labelStyle={globalStyles.buttonPrimaryText}
       >
-        Continue
+        Sign Up
       </Button>
-
-      <TouchableOpacity>
-        <Text style={globalStyles.footerLink}>Forgot password?</Text>
-      </TouchableOpacity>
-
-      {/* Sign Up Link */}
-      <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-        <Text style={[globalStyles.footerLink, { marginTop: 16 }]}>
-          Don't have an account? Sign up
-        </Text>
-      </TouchableOpacity>
 
       <Toast />
     </View>
   );
 };
 
-export default Login;
+export default Signup;
