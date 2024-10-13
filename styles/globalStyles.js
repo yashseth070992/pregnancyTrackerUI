@@ -8,7 +8,7 @@ export const globalStyles = StyleSheet.create({
     paddingVertical: 50,
     backgroundColor: colors.backgroundLight, // Use background color from theme
   },
-  
+
   // Paper container for wrapping content
   paperContainer: {
     padding: 20,
@@ -19,7 +19,7 @@ export const globalStyles = StyleSheet.create({
   customHeaderContainer: {
     alignItems: 'center', // Center items horizontally
     marginBottom: 20, // Add space below the header
-},
+  },
   logo: {
     width: 120,
     height: 120,
@@ -33,6 +33,7 @@ export const globalStyles = StyleSheet.create({
   },
   cardHeadingCentered: {
     fontSize: 21,
+    paddingBottom: 5,
     fontWeight: 'bold',
     color: colors.textPrimary, // Primary text color from theme
     textAlign: 'center',
@@ -45,7 +46,7 @@ export const globalStyles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     backgroundColor: colors.buttonPrimary,
-    color:colors.buttonTextPrimary,
+    color: colors.buttonTextPrimary,
     borderRadius: 15,
     shadowColor: colors.shadowColor,
     shadowOffset: { width: 0, height: 2 },
@@ -53,7 +54,7 @@ export const globalStyles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 4,
   },
-  
+
   card: {
     backgroundColor: colors.modalBackground, // White card background
     borderRadius: 10,
@@ -73,7 +74,7 @@ export const globalStyles = StyleSheet.create({
     elevation: 2,
   },
   cardListIcon: {
-    backgroundColor: colors.textPrimary, // White card background    
+    backgroundColor: colors.textPrimary, // White card background
   },
 
   // Text styles
@@ -299,7 +300,7 @@ export const globalStyles = StyleSheet.create({
 
   // Icon for each symptom
   symptomIcon: {
-color:colors.textPrimary,
+    color: colors.textPrimary,
     marginRight: 10, // Adds space between icon and text
   },
   deepShadow: {

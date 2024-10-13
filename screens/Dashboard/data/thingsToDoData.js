@@ -8,10 +8,16 @@ export const thingsToDoData = {
   // ... other weeks
 };
 
-function checkPathTypes(pathTypes,hostset) {
-  hostset && hostset.hostMembersList && hostset.hostMembersList.map((hosts)=>{
-    const pathType =hosts && hosts.hostPaths && hosts.hostPaths.length >0 && hosts.pathTypes[0].pathType
-    pathTypes[pathType] =pathTypes[pathType] +1 ||1;
-    return pathTypes
-  })
+function checkPathTypes(pathTypes, hostset) {
+  hostset &&
+    hostset.hostMembersList &&
+    hostset.hostMembersList.map((hosts) => {
+      const pathType =
+        hosts &&
+        hosts.hostPaths &&
+        hosts.hostPaths.length > 0 &&
+        hosts.pathTypes[0].pathType;
+      pathTypes[pathType] = pathTypes[pathType] + 1 || 1;
+      return pathTypes;
+    });
 }

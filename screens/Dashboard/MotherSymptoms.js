@@ -9,14 +9,21 @@ const MotherSymptoms = ({ week }) => {
 
   const renderItem = ({ item }) => (
     <View style={globalStyles.symptomItem}>
-      <Ionicons name={item.icon} size={20} color="#42A5F5" style={globalStyles.symptomIcon} />
+      <Ionicons
+        name={item.icon}
+        size={20}
+        color="#42A5F5"
+        style={globalStyles.symptomIcon}
+      />
       <Text style={globalStyles.paragraph}>{item.symptom}</Text>
     </View>
   );
 
   return (
     <View style={globalStyles.card}>
-      <Text style={globalStyles.cardHeadingCentered}>Mother’s Symptoms (Week {week})</Text>
+      <Text style={globalStyles.cardHeadingCentered}>
+        Mother’s Symptoms (Week {week})
+      </Text>
       <FlatList
         data={symptoms}
         renderItem={renderItem}
