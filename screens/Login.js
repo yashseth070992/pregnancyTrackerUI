@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 import { globalStyles } from '../styles/globalStyles';
@@ -17,35 +12,37 @@ const Login = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
-    try {
-      const response = await fetch('https://pregnancytracker-438514.el.r.appspot.com/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: email, password }),
-      });
+    navigation.navigate('Dashboard', { email: 'yashseth07@gmail.com' });
 
-      const result = await response.json();
+    // try {
+    // const response = await fetch('https://pregnancytracker-438514.el.r.appspot.com/login', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ email: email, password }),
+    // });
 
-      if (response.ok) {
-        Toast.show({
-          type: 'success',
-          text1: 'Login successful!',
-        });
-        navigation.navigate('Dashboard',  { email: email  });
-      } else {
-        Toast.show({
-          type: 'error',
-          text1: result.message || 'Login failed',
-        });
-      }
-    } catch (error) {
-      Toast.show({
-        type: 'error',
-        text1: 'Something went wrong!',
-      });
-    }
+    // const result = await response.json();
+
+    // if (response.ok) {
+    //     Toast.show({
+    //       type: 'success',
+    //       text1: 'Login successful!',
+    //     });
+    //     navigation.navigate('Dashboard',  { email: email  });
+    //   } else {
+    //     Toast.show({
+    //       type: 'error',
+    //       text1: result.message || 'Login failed',
+    //     });
+    //   }
+    // } catch (error) {
+    //   Toast.show({
+    //     type: 'error',
+    //     text1: 'Something went wrong!',
+    //   });
+    // }
   };
 
   return (

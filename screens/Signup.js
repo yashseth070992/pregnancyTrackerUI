@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Ionicons } from '@expo/vector-icons';
 import { globalStyles } from '../styles/globalStyles';
@@ -30,19 +25,22 @@ const Signup = ({ navigation }) => {
     }
 
     try {
-      const response = await fetch('https://pregnancytracker-438514.el.r.appspot.com/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://pregnancytracker-438514.el.r.appspot.com/signup',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            password,
+            email,
+            age: parseInt(age, 10), // Make sure age is a number
+          }),
         },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          password,
-          email,
-          age: parseInt(age, 10), // Make sure age is a number
-        }),
-      });
+      );
 
       const result = await response.json();
 

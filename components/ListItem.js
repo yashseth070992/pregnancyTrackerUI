@@ -6,7 +6,7 @@ import { globalStyles } from '../styles/globalStyles';
 const ListItem = ({ icon, text }) => (
   <View style={globalStyles.listItem}>
     <Ionicons name={icon} style={globalStyles.listItemIcon} />
-    <Text style={globalStyles.paragraph}>{text}</Text>
+    <Text style={globalStyles.listItemText}>{text}</Text>
   </View>
 );
 

@@ -13,9 +13,7 @@ const MotherSymptoms = ({ week }) => {
 
   return (
     <View style={globalStyles.card}>
-      <Text style={globalStyles.cardHeadingCentered}>
-        Mother’s Symptoms (Week {week})
-      </Text>
+      <Text style={globalStyles.heading}>Common Symptoms</Text>
       <FlatList
         data={symptoms}
         renderItem={renderItem}

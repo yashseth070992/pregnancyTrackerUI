@@ -1,59 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Avatar } from 'react-native-elements';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { colors } from '../styles/theme'; 
+import { colors } from '../styles/theme';
 
-const CustomHeader = ({ navigation, email }) => {
-  const [userInfo, setUserInfo] = useState(null);
-
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const response = await fetch(`https://pregnancytracker-438514.el.r.appspot.com/users/${email}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        const result = await response.json();
-        if (response.ok) {
-          setUserInfo(result);
-        } else {
-          console.error('Failed to fetch user info');
-        }
-      } catch (error) {
-        console.error('Error fetching user info:', error);
-      }
-    };
-
-    fetchUserInfo();
-  }, [email]);
-
+const CustomHeader = ({ navigation, firstName }) => {
   return (
-    <View style={styles.headerContainer}>
-      <View style={styles.leftSection}>
-        <Avatar
-          rounded
-          source={{
-            uri: userInfo?.avatarUrl || 'https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250',
-          }}
-          size="medium"
-        />
-        <Text style={styles.greetingText}>
-        Hi, {userInfo?.firstName ? userInfo.firstName.charAt(0).toUpperCase() + userInfo.firstName.slice(1) : 'User'}
-        </Text>
-      </View>
+    <>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={colors.buttonPrimary}
+      />
+      <View style={styles.headerContainer}>
+        <View style={styles.leftSection}>
+          <Avatar
+            rounded
+            source={{
+              uri: 'https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250',
+            }}
+            size="medium"
+          />
+          <Text style={styles.greetingText}>
+            Hi, {firstName.charAt(0).toUpperCase() + firstName.slice(1)}
+          </Text>
+        </View>
 
-      <View style={styles.rightSection}>
-        <Ionicons
-          name="settings-outline"
-          size={28}
-          color={colors.buttonTextPrimary}
-          onPress={() => navigation.navigate('Login')}
-        />
+        <View style={styles.rightSection}>
+          <Ionicons
+            name="power-outline" // Use a logout icon
+            size={28}
+            color={colors.buttonTextPrimary}
+            onPress={() => navigation.navigate('Login')}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
@@ -65,6 +46,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
     backgroundColor: colors.buttonPrimary,
+    // elevation: 4, // Android elevation for shadow
+    // shadowColor: '#000', // Shadow color
+    // shadowOffset: { width: 0, height: 2 }, // Offset for the shadow
+    // shadowOpacity: 0.1, // Opacity of the shadow
+    // shadowRadius: 6, // How far the shadow spreads
   },
   leftSection: {
     flexDirection: 'row',

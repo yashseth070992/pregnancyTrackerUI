@@ -1,30 +1,63 @@
+// Welcome.js
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-paper';
-import { globalStyles } from '../styles/globalStyles';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { globalStyles } from '../styles/globalStyles';
 import HeaderWithLogo from '../components/HeaderWithLogo';
-const Welcome = ({ navigation }) => {
+import NotSureOfDueDate from './NotSureOfDueDate';
+
+const Welcome = ({ userInfo, onSuccess }) => {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
+  const [showNotSureOfDueDate, setShowNotSureOfDueDate] = useState(false);
 
-  // Show Date Picker
   const showDatepicker = () => {
     setShow(true);
   };
 
-  // Handle Date Change
   const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios'); // On iOS, the picker stays open
-    setDate(currentDate); // Update the date
+    if (event.type === 'set') {
+      const currentDate = selectedDate || date;
+      setDate(currentDate);
+    }
+    setShow(false);
   };
+
+  const updateDueDate = async () => {
+    try {
+      const response = await fetch(
+        `https://pregnancytracker-438514.el.r.appspot.com/users/${userInfo.email}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ dueDate: date.toISOString().split('T')[0] }),
+        },
+      );
+
+      if (response.ok) {
+        console.log('Due date updated successfully');
+        onSuccess(); // Trigger the callback to reload Dashboard
+      } else {
+        console.error('Failed to update due date:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error during the API call:', error);
+    }
+  };
+
+  if (showNotSureOfDueDate) {
+    return <NotSureOfDueDate userInfo={userInfo} onSuccess={onSuccess} />; // Pass onSuccess to NotSureOfDueDate
+  }
 
   return (
     <View style={globalStyles.container}>
-      <HeaderWithLogo heading="Welcome!" />
+      <HeaderWithLogo heading={`Welcome ${userInfo?.firstName || ''}!`} />
       <Text style={globalStyles.paragraph}>
-        Enter due date or child's birthday to customize your BabyCentre journey
+        Enter your due date or your child's birthday to customize your
+        BabyCentre journey.
       </Text>
 
       <TouchableOpacity
@@ -47,7 +80,7 @@ const Welcome = ({ navigation }) => {
 
       <Button
         mode="contained"
-        onPress={() => navigation.navigate('Login')} // Navigate to the login screen
+        onPress={updateDueDate}
         style={globalStyles.buttonPrimary}
         labelStyle={globalStyles.buttonPrimaryText}
       >
@@ -56,23 +89,10 @@ const Welcome = ({ navigation }) => {
 
       <TouchableOpacity
         style={globalStyles.footer}
-        onPress={() => navigation.navigate('NotSureOfDueDate')}
+        onPress={() => setShowNotSureOfDueDate(true)}
       >
         <Text style={globalStyles.footerLink}>I don't know my due date</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        style={globalStyles.footer}
-        onPress={() => navigation.navigate('TryingToConceive')}
-      >
-        <Text style={globalStyles.footerLink}>Trying to conceive?</Text>
-      </TouchableOpacity>
-
-      <View style={globalStyles.footer}>
-        <Text style={globalStyles.footerText}>Have an account?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Text style={globalStyles.footerLink}>Login</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };

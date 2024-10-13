@@ -5,8 +5,11 @@ export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 16,
-    paddingVertical: 50,
+    paddingVertical: 20,
     backgroundColor: colors.backgroundLight, // Use background color from theme
+  },
+  lightBackground: {
+    backgroundColor: colors.backgroundLight,
   },
 
   // Paper container for wrapping content
@@ -43,16 +46,8 @@ export const globalStyles = StyleSheet.create({
     flexDirection: 'row', // Align icons and content in a row
     justifyContent: 'space-between', // Icons on both sides, content in the center
     alignItems: 'center',
-    padding: 20,
-    backgroundColor: colors.buttonPrimary,
     color: colors.buttonTextPrimary,
-    borderRadius: 15,
-    shadowColor: colors.shadowColor,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-    elevation: 4,
-    marginBottom: 16,
+    backgroundColor: colors.buttonPrimary,
   },
 
   card: {
@@ -81,12 +76,12 @@ export const globalStyles = StyleSheet.create({
   pregnancyText: {
     fontSize: 24,
     fontWeight: '700',
-    color: colors.textPrimary,
+    color: colors.buttonTextPrimary,
     textAlign: 'center',
   },
   dateRange: {
     fontSize: 16,
-    color: colors.accentColor,
+    color: colors.buttonTextPrimary,
     marginTop: 5,
     textAlign: 'center',
   },
@@ -98,7 +93,7 @@ export const globalStyles = StyleSheet.create({
   },
   subText: {
     fontSize: 14,
-    color: colors.textSecondary,
+    color: colors.buttonTextPrimary,
     textAlign: 'center',
   },
 
@@ -107,7 +102,7 @@ export const globalStyles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 10, // Padding between icons and text content
+    padding: 10, // Padding between icons and text content
   },
 
   // Styles for the left and right icons
@@ -143,7 +138,6 @@ export const globalStyles = StyleSheet.create({
   iconDarkColor: {
     color: colors.backgroundDark,
   },
-
   // Typography
   heading: {
     fontSize: 28,
@@ -165,6 +159,13 @@ export const globalStyles = StyleSheet.create({
     marginBottom: 12, // Add space between the growth detail and the length/weight
     flexShrink: 1, // Allow text to shrink if needed to avoid overflow
     flexWrap: 'wrap', // Wrap text within its container
+  },
+  loaderText: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: colors.textPrimary, // Primary text color from theme
+    lineHeight: 24,
+    marginBottom: 12, // Add space between the growth detail and the length/weight
   },
   infoContainer: {
     flexDirection: 'row', // Align length and weight side by side
@@ -195,7 +196,7 @@ export const globalStyles = StyleSheet.create({
     marginBottom: 16,
   },
   buttonPrimaryText: {
-    color: colors.buttonTextPrimary, // Button text color
+    color: colors.buttonTextPrimary,
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -330,9 +331,21 @@ export const globalStyles = StyleSheet.create({
     elevation: 3,
   },
   listItemIcon: {
-    color: colors.textPrimary,
+    color: colors.buttonTextPrimary,
     fontSize: 20,
     marginRight: 10, // Adds space between icon and text
+  },
+  listItemText: {
+    color: colors.buttonTextPrimary,
+    fontSize: 20,
+    marginRight: 10, // Adds space between icon and text
+    fontSize: 16,
+
+    // lineHeight: 24,
+    // textAlign: 'center', // Center the text
+    // marginBottom: 12, // Add space between the growth detail and the length/weight
+    // flexShrink: 1, // Allow text to shrink if needed to avoid overflow
+    // flexWrap: 'wrap', // Wrap tex
   },
   deepShadow: {
     shadowColor: colors.shadowColor, // Deeper shadow for elevation

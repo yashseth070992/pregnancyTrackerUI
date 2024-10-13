@@ -28,7 +28,6 @@ const HeaderComponent = ({
           {currentWeek} weeks pregnant
         </Text>
         <Text style={globalStyles.dateRange}>{dateRange}</Text>
-        <Text style={globalStyles.messageText}>{message}</Text>
         <Text style={globalStyles.subText}>132 days left</Text>
       </View>
 

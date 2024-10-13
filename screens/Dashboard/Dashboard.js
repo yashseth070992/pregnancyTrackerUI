@@ -1,58 +1,100 @@
-import React, { useState } from 'react';
-import { FlatList } from 'react-native';
-import BabyGrowthCard from './BabyGrowthCard';
-import MotherSymptoms from './MotherSymptoms';
-import ThingsToDo from './ThingsToDo';
-import Celebration from './Celebration';
-import DailyReads from './DailyReads';
-import RecommendationList from './RecommendationList';
-import HeaderComponent from './HeaderComponent'; // Import the new header component
-import { globalStyles } from '../../styles/globalStyles';
+import React, { useEffect, useState } from 'react';
+import { Text } from 'react-native';
+import Landing from '../Landing';
+import Welcome from '../Welcome';
+import CustomHeader from '../../components/CustomHeader';
+import Loader from '../../components/Loader';
 
-const Dashboard = () => {
+const Dashboard = ({ route, navigation }) => {
+  const { email } = route.params;
+  const [currentWeek, setCurrentWeek] = useState(20);
+  const [userInfo, setUserInfo] = useState(null);
 
-  const [currentWeek, setCurrentWeek] = useState(20); // Set the initial week
+  const fetchUserInfo = async () => {
+    try {
+      const response = await fetch(
+        `https://pregnancytracker-438514.el.r.appspot.com/users/${email}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      const result = await response.json();
+      if (response.ok) {
+        setUserInfo(result);
+        if (result.dueDate) {
+          calculateCurrentWeek(result.dueDate);
+        }
+      } else {
+        console.error('Failed to fetch user info');
+      }
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+    }
+  };
 
-  // Function to go to the next week (max 40 weeks)
+  // Function to calculate the current pregnancy week
+  const calculateCurrentWeek = (dueDate) => {
+    const today = new Date();
+    const dueDateObj = new Date(dueDate);
+    const pregnancyStartDate = new Date(
+      dueDateObj.setDate(dueDateObj.getDate() - 280),
+    ); // 280 days before due date
+    const diffInDays = Math.floor(
+      (today - pregnancyStartDate) / (1000 * 60 * 60 * 24),
+    );
+    const currentPregnancyWeek = Math.floor(diffInDays / 7);
+
+    // Ensure currentWeek is between 1 and 40 weeks
+    console.log('dueDate', dueDate);
+    setCurrentWeek(Math.min(Math.max(currentPregnancyWeek, 1), 40));
+  };
+
+  // Fetch user info when the dashboard mounts
+  useEffect(() => {
+    fetchUserInfo();
+  }, [email]);
+
+  const handleRefresh = () => {
+    fetchUserInfo(); // Reload the data when the callback is triggered
+  };
+
   const onNextWeek = () => {
     if (currentWeek < 40) {
       setCurrentWeek(currentWeek + 1);
     }
   };
 
-  // Function to go to the previous week (min 1 week)
   const onPreviousWeek = () => {
     if (currentWeek > 1) {
       setCurrentWeek(currentWeek - 1);
     }
   };
 
-  const data = [{ key: 'recommendationList' }]; // Placeholder data for FlatList
-
   return (
-    <FlatList
-      data={data}
-      style={globalStyles.container}
-      keyExtractor={(item) => item.key}
-      ListHeaderComponent={
-        <>
-          <HeaderComponent
-            currentWeek={currentWeek}
-            dateRange="Oct 04 - Oct 10"
-            message="Cozy times ahead 😊"
-            onNextWeek={onNextWeek}
-            onPreviousWeek={onPreviousWeek}
-          />
-
-          <BabyGrowthCard week={currentWeek} />
-          <MotherSymptoms week={currentWeek} />
-          <ThingsToDo week={currentWeek} />
-          <Celebration week={currentWeek} />
-        </>
-      }
-      renderItem={() => <RecommendationList />}
-      // ListFooterComponent={<DailyReads week={currentWeek} />}
-    />
+    <>
+      {userInfo ? (
+        userInfo.dueDate ? (
+          <>
+            <CustomHeader
+              navigation={navigation}
+              firstName={userInfo?.firstName || 'User'}
+            />
+            <Landing
+              currentWeek={currentWeek} // Pass the calculated currentWeek
+              onNextWeek={onNextWeek}
+              onPreviousWeek={onPreviousWeek}
+            />
+          </>
+        ) : (
+          <Welcome userInfo={userInfo} onSuccess={handleRefresh} />
+        )
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 };
 
