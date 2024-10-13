@@ -52,6 +52,7 @@ export const globalStyles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 6,
     elevation: 4,
+    marginBottom: 16,
   },
 
   card: {
@@ -120,8 +121,27 @@ export const globalStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  imagePreview: {
+    width: 200,
+    height: 200,
+    borderRadius: 10,
+    resizeMode: 'cover', // Ensure the image is resized correctly
+    backgroundColor: '#f0f0f0', // Optional: set a background to visualize the image area
+  },
+  imagePreviewGrowth: {
+    width: 50, // Adjust width as needed
+    height: 50, // Adjust height as needed
+    alignSelf: 'center', // Center the image
+    resizeMode: 'contain', // Keep the aspect ratio within the container
+    backgroundColor: 'transparent', // Ensure the background remains transparent
+    marginBottom: 16, // Add space below the image
+  },
+
   iconColor: {
     color: colors.buttonTextPrimary,
+  },
+  iconDarkColor: {
+    color: colors.backgroundDark,
   },
 
   // Typography
@@ -143,6 +163,8 @@ export const globalStyles = StyleSheet.create({
     lineHeight: 24,
     textAlign: 'center', // Center the text
     marginBottom: 12, // Add space between the growth detail and the length/weight
+    flexShrink: 1, // Allow text to shrink if needed to avoid overflow
+    flexWrap: 'wrap', // Wrap text within its container
   },
   infoContainer: {
     flexDirection: 'row', // Align length and weight side by side
@@ -293,7 +315,7 @@ export const globalStyles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
   },
-  symptomItem: {
+  listItem: {
     flexDirection: 'row', // Ensures icon and text are in the same line
     alignItems: 'center', // Align items vertically in the center
     marginBottom: 8,
@@ -307,10 +329,9 @@ export const globalStyles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 3,
   },
-
-  // Icon for each symptom
-  symptomIcon: {
+  listItemIcon: {
     color: colors.textPrimary,
+    fontSize: 20,
     marginRight: 10, // Adds space between icon and text
   },
   deepShadow: {

@@ -3,6 +3,7 @@ import { View, Text, Image } from 'react-native';
 import { globalStyles } from '../../styles/globalStyles'; // Assuming globalStyles is available
 import Ionicons from '@expo/vector-icons/Ionicons'; // Import Ionicons
 import { babyData } from './data/babyGrowthData'; // Import the baby growth data
+import babyGrowthImage from '../../assets/babyGrowing.png'; // Replace with your actual image path
 
 const BabyGrowthCard = ({ week }) => {
   const data = babyData[week] || babyData[4]; // Default to week 4 if data for the week is not available
@@ -13,11 +14,8 @@ const BabyGrowthCard = ({ week }) => {
       <Text style={globalStyles.cardHeadingCentered}>
         Baby Size: {data.size}
       </Text>
-      <Ionicons
-        name="ice-cream-outline"
-        size={60}
-        style={globalStyles.iconCenter}
-      />
+      <Image source={babyGrowthImage} style={globalStyles.imagePreviewGrowth} />
+
       <View style={globalStyles.infoContainer}>
         <Text style={globalStyles.smallText}>Length: {data.length}</Text>
         <Text style={globalStyles.smallText}>Weight: {data.weight}</Text>

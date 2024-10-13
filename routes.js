@@ -13,7 +13,7 @@ export default function Routes() {
   const currentWeek = 5; // This could come from user data
 
   return (
-    <Stack.Navigator initialRouteName="Dashboard">
+    <Stack.Navigator initialRouteName="Welcome">
       {/* Welcome Screen Route */}
       <Stack.Screen
         name="Welcome"

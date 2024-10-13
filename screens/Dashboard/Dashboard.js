@@ -50,7 +50,7 @@ const Dashboard = () => {
         </>
       }
       renderItem={() => <RecommendationList />}
-      ListFooterComponent={<DailyReads week={currentWeek} />}
+      // ListFooterComponent={<DailyReads week={currentWeek} />}
     />
   );
 };

@@ -18,10 +18,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo_512x512.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.yashseth07.PregaTrack"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4f198000-e521-4db3-b188-b5cb9de62064"
+      }
     }
   }
 }

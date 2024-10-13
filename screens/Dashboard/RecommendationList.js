@@ -1,25 +1,32 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Linking,
+} from 'react-native';
 import { globalStyles } from '../../styles/globalStyles';
 import { products } from './data/recommendationList';
 
-// ProductCard Component
 const ProductCard = ({ product }) => (
-  <View style={styles.card}>
-    <Image source={{ uri: product.imageUrl }} style={styles.productImage} />
-    <View style={styles.productInfo}>
-      <Text style={globalStyles.boldText}>{product.name}</Text>
-      <Text style={globalStyles.paragraph}>{product.description}</Text>
-      <Text style={globalStyles.smallText}>{product.price}</Text>
+  <TouchableOpacity onPress={() => Linking.openURL(product.productUrl)}>
+    <View style={styles.card}>
+      <Image source={product.imageUrl} style={styles.productImage} />
+      <View style={styles.productInfo}>
+        <Text style={globalStyles.boldText}>{product.name}</Text>
+        <Text style={globalStyles.paragraph}>{product.description}</Text>
+      </View>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 const RecommendationList = () => {
   return (
     <View style={globalStyles.container}>
       <Text style={globalStyles.headingCentered}>Recommended Products</Text>
-      {/* FlatList used to render product recommendations */}
       <FlatList
         data={products}
         keyExtractor={(item) => item.id}

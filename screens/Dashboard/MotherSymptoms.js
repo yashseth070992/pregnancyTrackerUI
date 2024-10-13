@@ -2,21 +2,13 @@ import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { globalStyles } from '../../styles/globalStyles';
 import { symptomsData } from './data/symptomsData';
-import { Ionicons } from '@expo/vector-icons'; // Import Ionicons
+import ListItem from '../../components/ListItem'; // Import the new generic ListItem
 
 const MotherSymptoms = ({ week }) => {
   const symptoms = symptomsData[week] || symptomsData[4];
 
   const renderItem = ({ item }) => (
-    <View style={globalStyles.symptomItem}>
-      <Ionicons
-        name={item.icon}
-        size={20}
-        color="#42A5F5"
-        style={globalStyles.symptomIcon}
-      />
-      <Text style={globalStyles.paragraph}>{item.symptom}</Text>
-    </View>
+    <ListItem icon={item.icon} text={item.symptom} />
   );
 
   return (
