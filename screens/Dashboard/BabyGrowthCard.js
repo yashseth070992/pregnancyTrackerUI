@@ -10,12 +10,8 @@ const BabyGrowthCard = ({ week }) => {
 
   return (
     <View style={globalStyles.card}>
-      {/* Baby Size Text */}
-      <Text style={globalStyles.cardHeadingCentered}>
-        Baby Size: {data.size}
-      </Text>
+      <Text style={globalStyles.heading}>Baby Size: {data.size}</Text>
       <Image source={babyGrowthImage} style={globalStyles.imagePreviewGrowth} />
-
       <View style={globalStyles.infoContainer}>
         <Text style={globalStyles.smallText}>Length: {data.length}</Text>
         <Text style={globalStyles.smallText}>Weight: {data.weight}</Text>

@@ -21,7 +21,7 @@ const Landing = ({ currentWeek, onNextWeek, onPreviousWeek }) => {
       />
       <FlatList
         data={data}
-        style={globalStyles.container}
+        style={[globalStyles.container]}
         keyExtractor={(item) => item.key}
         ListHeaderComponent={
           <>

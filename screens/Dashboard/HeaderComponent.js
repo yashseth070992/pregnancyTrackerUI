@@ -13,7 +13,6 @@ const HeaderComponent = ({
 }) => {
   return (
     <View style={globalStyles.headerContainer}>
-      {/* Left Icon for navigating to previous week */}
       <TouchableOpacity onPress={onPreviousWeek} style={globalStyles.iconLeft}>
         <Icon
           name="arrow-back"
@@ -22,7 +21,6 @@ const HeaderComponent = ({
         />
       </TouchableOpacity>
 
-      {/* Middle content with centered text */}
       <View style={globalStyles.contentContainer}>
         <Text style={globalStyles.pregnancyText}>
           {currentWeek} weeks pregnant

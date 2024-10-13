@@ -25,8 +25,8 @@ const ProductCard = ({ product }) => (
 
 const RecommendationList = () => {
   return (
-    <View style={globalStyles.container}>
-      <Text style={globalStyles.headingCentered}>Recommended Products</Text>
+    <View>
+      <Text style={globalStyles.heading}>Recommended Products</Text>
       <FlatList
         data={products}
         keyExtractor={(item) => item.id}

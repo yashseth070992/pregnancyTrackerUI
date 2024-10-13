@@ -6,17 +6,17 @@ export const globalStyles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingVertical: 20,
-    backgroundColor: colors.backgroundLight, // Use background color from theme
+    backgroundColor: colors.backgroundSecondary, // Use background color from theme
   },
   lightBackground: {
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.backgroundPrimary,
   },
 
   // Paper container for wrapping content
   paperContainer: {
     padding: 20,
     borderRadius: 15,
-    backgroundColor: colors.backgroundLight, // Paper background
+    backgroundColor: colors.backgroundPrimary, // Paper background
     elevation: 4, // Adds shadow and depth effect
   },
   customHeaderContainer: {
@@ -46,12 +46,12 @@ export const globalStyles = StyleSheet.create({
     flexDirection: 'row', // Align icons and content in a row
     justifyContent: 'space-between', // Icons on both sides, content in the center
     alignItems: 'center',
-    color: colors.buttonTextPrimary,
-    backgroundColor: colors.buttonPrimary,
+    color: colors.textSecondary,
+    backgroundColor: colors.backgroundSecondary,
   },
 
   card: {
-    backgroundColor: colors.modalBackground, // White card background
+    backgroundColor: colors.backgroundPrimary, // White card background
     borderRadius: 10,
     padding: 16,
     marginBottom: 16,
@@ -62,7 +62,7 @@ export const globalStyles = StyleSheet.create({
     elevation: 2,
   },
   cardList: {
-    backgroundColor: colors.backgroundDark, // White card background
+    backgroundColor: colors.backgroundSecondary, // White card background
     borderRadius: 10,
     padding: 4,
     marginBottom: 4,
@@ -76,12 +76,12 @@ export const globalStyles = StyleSheet.create({
   pregnancyText: {
     fontSize: 24,
     fontWeight: '700',
-    color: colors.buttonTextPrimary,
+    color: colors.textPrimary,
     textAlign: 'center',
   },
   dateRange: {
     fontSize: 16,
-    color: colors.buttonTextPrimary,
+    color: colors.textPrimary,
     marginTop: 5,
     textAlign: 'center',
   },
@@ -93,7 +93,7 @@ export const globalStyles = StyleSheet.create({
   },
   subText: {
     fontSize: 14,
-    color: colors.buttonTextPrimary,
+    color: colors.textPrimary,
     textAlign: 'center',
   },
 
@@ -133,10 +133,10 @@ export const globalStyles = StyleSheet.create({
   },
 
   iconColor: {
-    color: colors.buttonTextPrimary,
+    color: colors.textPrimary,
   },
   iconDarkColor: {
-    color: colors.backgroundDark,
+    color: colors.textSecondary,
   },
   // Typography
   heading: {
@@ -178,7 +178,7 @@ export const globalStyles = StyleSheet.create({
   },
   link: {
     fontSize: 16,
-    color: colors.textAccent, // Accent color for links
+    color: colors.textPrimary, // Accent color for links
     textDecorationLine: 'underline',
   },
   boldText: {
@@ -212,18 +212,6 @@ export const globalStyles = StyleSheet.create({
   },
   buttonSecondaryText: {
     color: colors.buttonTextSecondary, // Text color for secondary button
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  buttonDisabled: {
-    backgroundColor: colors.buttonDisabled, // Disabled button background color
-    borderRadius: 10,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-  },
-  buttonDisabledText: {
-    color: colors.buttonTextDisabled, // Disabled button text color
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -279,7 +267,7 @@ export const globalStyles = StyleSheet.create({
     color: colors.textSecondary, // Secondary text color for footer
   },
   footerLink: {
-    color: colors.textAccent, // Accent color for footer links
+    color: colors.textPrimary, // Accent color for footer links
     fontSize: 16,
     marginLeft: 5,
     textDecorationLine: 'underline',
@@ -292,7 +280,7 @@ export const globalStyles = StyleSheet.create({
     margin: 0, // Full-screen modal
   },
   modalContent: {
-    backgroundColor: colors.modalBackground, // Modal background color
+    backgroundColor: colors.cardBackground, // Modal background color
     borderRadius: 10,
     padding: 20,
     shadowColor: colors.shadowColor, // Modal shadow color
@@ -322,7 +310,7 @@ export const globalStyles = StyleSheet.create({
     marginBottom: 8,
     paddingVertical: 8,
     paddingHorizontal: 10,
-    backgroundColor: colors.backgroundDark,
+    backgroundColor: colors.backgroundSecondary,
     borderRadius: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -331,21 +319,15 @@ export const globalStyles = StyleSheet.create({
     elevation: 3,
   },
   listItemIcon: {
-    color: colors.buttonTextPrimary,
+    color: colors.textPrimary,
     fontSize: 20,
     marginRight: 10, // Adds space between icon and text
   },
   listItemText: {
-    color: colors.buttonTextPrimary,
+    color: colors.textPrimary,
     fontSize: 20,
     marginRight: 10, // Adds space between icon and text
     fontSize: 16,
-
-    // lineHeight: 24,
-    // textAlign: 'center', // Center the text
-    // marginBottom: 12, // Add space between the growth detail and the length/weight
-    // flexShrink: 1, // Allow text to shrink if needed to avoid overflow
-    // flexWrap: 'wrap', // Wrap tex
   },
   deepShadow: {
     shadowColor: colors.shadowColor, // Deeper shadow for elevation

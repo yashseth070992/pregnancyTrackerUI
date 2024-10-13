@@ -9,7 +9,7 @@ const CustomHeader = ({ navigation, firstName }) => {
     <>
       <StatusBar
         barStyle="light-content"
-        backgroundColor={colors.buttonPrimary}
+        backgroundColor={colors.backgroundSecondary}
       />
       <View style={styles.headerContainer}>
         <View style={styles.leftSection}>
@@ -29,7 +29,7 @@ const CustomHeader = ({ navigation, firstName }) => {
           <Ionicons
             name="power-outline" // Use a logout icon
             size={28}
-            color={colors.buttonTextPrimary}
+            color={colors.textSecondary}
             onPress={() => navigation.navigate('Login')}
           />
         </View>
@@ -45,12 +45,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    backgroundColor: colors.buttonPrimary,
-    // elevation: 4, // Android elevation for shadow
-    // shadowColor: '#000', // Shadow color
-    // shadowOffset: { width: 0, height: 2 }, // Offset for the shadow
-    // shadowOpacity: 0.1, // Opacity of the shadow
-    // shadowRadius: 6, // How far the shadow spreads
+    backgroundColor: colors.backgroundSecondary,
   },
   leftSection: {
     flexDirection: 'row',
@@ -59,7 +54,7 @@ const styles = StyleSheet.create({
   greetingText: {
     marginLeft: 10,
     fontSize: 18,
-    color: colors.buttonTextPrimary,
+    color: colors.textSecondary,
     fontWeight: 'bold',
   },
   rightSection: {

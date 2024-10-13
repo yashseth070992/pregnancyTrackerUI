@@ -33,16 +33,14 @@ const Celebration = ({ week }) => {
 
   return (
     <View style={globalStyles.card}>
-      <Text style={globalStyles.headingCentered}>Celebration</Text>
-      <Text style={globalStyles.paragraph}>
-        Congratulations on completing {week} weeks!
-      </Text>
-
+      <Text style={globalStyles.heading}>Celebration</Text>
       <View style={globalStyles.contentContainer}>
-        <Text style={globalStyles.subText}>
-          Capture your baby bump photo for week {week}!
-        </Text>
-
+        {babyBumpImage && (
+          <Image
+            source={{ uri: babyBumpImage }}
+            style={globalStyles.imagePreview}
+          />
+        )}
         <TouchableOpacity
           onPress={handleCapturePhoto}
           style={globalStyles.contentContainer}
@@ -53,11 +51,17 @@ const Celebration = ({ week }) => {
             style={globalStyles.iconDarkColor}
           />
         </TouchableOpacity>
+        {!babyBumpImage && (
+          <Text style={globalStyles.paragraph}>
+            Congrats on reaching {week} weeks! Don’t forget to capture your
+            growing baby bump!{' '}
+          </Text>
+        )}
         {babyBumpImage && (
-          <Image
-            source={{ uri: babyBumpImage }}
-            style={globalStyles.imagePreview}
-          />
+          <Text style={globalStyles.paragraph}>
+            Not happy with the photo? Would you like to capture your baby bump
+            again?
+          </Text>
         )}
       </View>
     </View>
