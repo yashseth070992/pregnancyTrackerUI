@@ -1,33 +1,29 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import { globalStyles } from '../../styles/globalStyles';
+import { symptomsData } from './data/symptomsData';
+import ListItem from '../../components/ListItem'; // Import the new generic ListItem
 
 const MotherSymptoms = ({ week }) => {
-  // Data for mother's symptoms per week
-  const symptomsData = {
-    4: ['Fatigue', 'Morning sickness', 'Frequent urination'],
-    5: ['Nausea', 'Breast tenderness', 'Mood swings'],
-    // ... other weeks
-  };
-
   const symptoms = symptomsData[week] || symptomsData[4];
 
+  const renderItem = ({ item }) => (
+    <ListItem icon={item.icon} text={item.symptom} />
+  );
+
   return (
-    <View style={styles.container}>
-      <Text style={globalStyles.heading}>Mother’s Symptoms</Text>
-      {symptoms.map((symptom, index) => (
-        <Text key={index} style={globalStyles.paragraph}>
-          {symptom}
-        </Text>
-      ))}
+    <View style={globalStyles.card}>
+      <Text style={globalStyles.cardHeadingCentered}>
+        Mother’s Symptoms (Week {week})
+      </Text>
+      <FlatList
+        data={symptoms}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        contentContainerStyle={globalStyles.list}
+      />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    marginVertical: 16,
-  },
-});
 
 export default MotherSymptoms;

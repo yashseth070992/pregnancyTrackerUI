@@ -1,56 +1,32 @@
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Linking,
+} from 'react-native';
 import { globalStyles } from '../../styles/globalStyles';
+import { products } from './data/recommendationList';
 
-// Dummy data for recommended products
-const products = [
-  {
-    id: '1',
-    name: 'Pregnancy Pillow',
-    description: 'A comfortable pillow for better sleep during pregnancy.',
-    price: '$35',
-    imageUrl: 'https://via.placeholder.com/100',
-  },
-  {
-    id: '2',
-    name: 'Prenatal Vitamins',
-    description: 'Essential vitamins to support a healthy pregnancy.',
-    price: '$25',
-    imageUrl: 'https://via.placeholder.com/100',
-  },
-  {
-    id: '3',
-    name: 'Maternity Belt',
-    description: 'Supportive belt to reduce back pain and discomfort.',
-    price: '$40',
-    imageUrl: 'https://via.placeholder.com/100',
-  },
-  {
-    id: '4',
-    name: 'Stretch Mark Cream',
-    description: 'Helps reduce the appearance of stretch marks.',
-    price: '$15',
-    imageUrl: 'https://via.placeholder.com/100',
-  },
-];
-
-// ProductCard Component
 const ProductCard = ({ product }) => (
-  <View style={styles.card}>
-    <Image source={{ uri: product.imageUrl }} style={styles.productImage} />
-    <View style={styles.productInfo}>
-      <Text style={globalStyles.boldText}>{product.name}</Text>
-      <Text style={globalStyles.paragraph}>{product.description}</Text>
-      <Text style={globalStyles.smallText}>{product.price}</Text>
+  <TouchableOpacity onPress={() => Linking.openURL(product.productUrl)}>
+    <View style={styles.card}>
+      <Image source={product.imageUrl} style={styles.productImage} />
+      <View style={styles.productInfo}>
+        <Text style={globalStyles.boldText}>{product.name}</Text>
+        <Text style={globalStyles.paragraph}>{product.description}</Text>
+      </View>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 const RecommendationList = () => {
   return (
     <View style={globalStyles.container}>
       <Text style={globalStyles.headingCentered}>Recommended Products</Text>
-      {/* FlatList used to render product recommendations */}
       <FlatList
         data={products}
         keyExtractor={(item) => item.id}

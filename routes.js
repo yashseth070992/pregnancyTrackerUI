@@ -5,11 +5,13 @@ import Login from './screens/Login';
 import NotSureOfDueDate from './screens/NotSureOfDueDate';
 import TryingToConceive from './screens/TryingToConceive';
 import Dashboard from './screens/Dashboard/Dashboard';
+import CustomHeader from './components/CustomHeader'; // Import your custom header component
 
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
   const currentWeek = 5; // This could come from user data
+
   return (
     <Stack.Navigator initialRouteName="Welcome">
       {/* Welcome Screen Route */}
@@ -39,9 +41,11 @@ export default function Routes() {
         component={TryingToConceive}
         options={{ headerShown: false }}
       />
+
+      {/* Dashboard Screen Route */}
       <Stack.Screen
         name="Dashboard"
-        options={{ title: 'My Pregnancy Journey' }}
+        options={({ navigation }) => CustomHeader({ navigation })} // Pass the navigation prop
       >
         {(props) => <Dashboard {...props} currentWeek={currentWeek} />}
       </Stack.Screen>
