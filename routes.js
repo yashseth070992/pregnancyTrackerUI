@@ -7,7 +7,7 @@ import NotSureOfDueDate from './screens/NotSureOfDueDate';
 import TryingToConceive from './screens/TryingToConceive';
 import Dashboard from './screens/Dashboard/Dashboard';
 import CustomHeader from './components/CustomHeader'; // Import your custom header component
-
+import { colors } from './styles/theme'; 
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {
@@ -50,11 +50,20 @@ export default function Routes() {
 
       {/* Dashboard Screen Route */}
       <Stack.Screen
-        name="Dashboard"
-        options={({ navigation }) => CustomHeader({ navigation })} // Pass the navigation prop
-      >
-        {(props) => <Dashboard {...props} currentWeek={currentWeek} />}
-      </Stack.Screen>
+  name="Dashboard"
+  options={({ route, navigation }) => ({
+    title: 'My Pregnancy Journey',
+    header: () => <CustomHeader navigation={navigation} email={route.params.email} />, // Pass email as prop
+    headerStyle: {
+      backgroundColor: colors.buttonPrimary,
+    },
+    headerTintColor: colors.buttonTextPrimary,
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  })}
+  component={Dashboard}
+/>
     </Stack.Navigator>
   );
 }

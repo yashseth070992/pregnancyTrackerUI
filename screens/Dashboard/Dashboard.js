@@ -10,6 +10,7 @@ import HeaderComponent from './HeaderComponent'; // Import the new header compon
 import { globalStyles } from '../../styles/globalStyles';
 
 const Dashboard = () => {
+
   const [currentWeek, setCurrentWeek] = useState(20); // Set the initial week
 
   // Function to go to the next week (max 40 weeks)

@@ -13,8 +13,11 @@ import Toast from 'react-native-toast-message';
 
 const Signup = ({ navigation }) => {
   const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [age, setAge] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSignup = async () => {
@@ -32,7 +35,13 @@ const Signup = ({ navigation }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: email, password }),
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          password,
+          email,
+          age: parseInt(age, 10), // Make sure age is a number
+        }),
       });
 
       const result = await response.json();
@@ -63,11 +72,35 @@ const Signup = ({ navigation }) => {
 
       <TextInput
         style={globalStyles.input}
+        placeholder="First Name"
+        value={firstName}
+        onChangeText={setFirstName}
+        autoCapitalize="none"
+      />
+
+      <TextInput
+        style={globalStyles.input}
+        placeholder="Last Name"
+        value={lastName}
+        onChangeText={setLastName}
+        autoCapitalize="none"
+      />
+
+      <TextInput
+        style={globalStyles.input}
         placeholder="Email address"
         value={email}
         onChangeText={setEmail}
         keyboardType="email-address"
         autoCapitalize="none"
+      />
+
+      <TextInput
+        style={globalStyles.input}
+        placeholder="Age"
+        value={age}
+        onChangeText={setAge}
+        keyboardType="numeric"
       />
 
       <View style={globalStyles.inputContainer}>

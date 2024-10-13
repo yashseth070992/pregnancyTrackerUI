@@ -23,7 +23,7 @@ const Login = ({ navigation }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: email, password }),
+        body: JSON.stringify({ email: email, password }),
       });
 
       const result = await response.json();
@@ -33,7 +33,7 @@ const Login = ({ navigation }) => {
           type: 'success',
           text1: 'Login successful!',
         });
-        navigation.navigate('Dashboard');
+        navigation.navigate('Dashboard',  { email: email  });
       } else {
         Toast.show({
           type: 'error',
