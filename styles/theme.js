@@ -1,7 +1,7 @@
 export const colors = {
   // Background Colors
   backgroundLight: '#FDECEF', // Light, soft pinkish background
-  backgroundDark: '#3B3B58', // A deep plum color for dark theme backgrounds
+  backgroundDark: '#F48FB1', // A deep plum color for dark theme backgrounds
 
   // Text Colors
   textPrimary: '#3B3B58', // A deep plum color for primary text

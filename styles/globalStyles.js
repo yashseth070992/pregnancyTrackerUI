@@ -31,6 +31,12 @@ export const globalStyles = StyleSheet.create({
     color: colors.textPrimary, // Primary text color from theme
     textAlign: 'center',
   },
+  cardHeadingCentered: {
+    fontSize: 21,
+    fontWeight: 'bold',
+    color: colors.textPrimary, // Primary text color from theme
+    textAlign: 'center',
+  },
 
   // Header Component Styles
   headerContainer: {
@@ -58,6 +64,16 @@ export const globalStyles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,
+  },
+  cardList: {
+    backgroundColor: colors.backgroundDark, // White card background
+    borderRadius: 10,
+    padding: 4,
+    marginBottom: 4,
+    elevation: 2,
+  },
+  cardListIcon: {
+    backgroundColor: colors.textPrimary, // White card background    
   },
 
   // Text styles
@@ -123,9 +139,8 @@ export const globalStyles = StyleSheet.create({
   },
   paragraph: {
     fontSize: 16,
-    color: colors.textSecondary, // Secondary text color from theme
+    color: colors.textPrimary, // Secondary text color from theme
     lineHeight: 24,
-    marginBottom: 16,
   },
   smallText: {
     fontSize: 14,
@@ -266,6 +281,26 @@ export const globalStyles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 2,
+  },
+  symptomItem: {
+    flexDirection: 'row', // Ensures icon and text are in the same line
+    alignItems: 'center', // Align items vertically in the center
+    marginBottom: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+    backgroundColor: colors.backgroundDark,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+
+  // Icon for each symptom
+  symptomIcon: {
+color:colors.textPrimary,
+    marginRight: 10, // Adds space between icon and text
   },
   deepShadow: {
     shadowColor: colors.shadowColor, // Deeper shadow for elevation
