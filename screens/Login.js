@@ -12,7 +12,10 @@ const Login = ({ navigation }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async () => {
-    navigation.navigate('Dashboard', { email: 'yashseth07@gmail.com' });
+    navigation.navigate('MainDrawer', {
+      screen: 'Home', // Specify the Drawer screen
+      params: { email: 'yashseth07@gmail.com' }, // Pass params to the drawer
+    });
 
     // try {
     // const response = await fetch('https://pregnancytracker-438514.el.r.appspot.com/login', {

@@ -6,7 +6,7 @@ import CustomHeader from '../../components/CustomHeader';
 import Loader from '../../components/Loader';
 
 const Dashboard = ({ route, navigation }) => {
-  const { email } = route.params;
+  const { email } = route.params || {};
   const [currentWeek, setCurrentWeek] = useState(20);
   const [userInfo, setUserInfo] = useState(null);
 

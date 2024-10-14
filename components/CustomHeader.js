@@ -1,8 +1,15 @@
 import React from 'react';
 import { Avatar } from 'react-native-elements';
-import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  StatusBar,
+  TouchableOpacity,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { colors } from '../styles/theme';
+import { DrawerActions } from '@react-navigation/native';
 
 const CustomHeader = ({ navigation, firstName }) => {
   return (
@@ -13,12 +20,21 @@ const CustomHeader = ({ navigation, firstName }) => {
       />
       <View style={styles.headerContainer}>
         <View style={styles.leftSection}>
+          <TouchableOpacity
+            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+          >
+            <Ionicons
+              name="menu-outline"
+              size={28}
+              color={colors.textSecondary}
+            />
+          </TouchableOpacity>
           <Avatar
             rounded
             source={{
               uri: 'https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250',
             }}
-            size="medium"
+            size="small"
           />
           <Text style={styles.greetingText}>
             Hi, {firstName.charAt(0).toUpperCase() + firstName.slice(1)}
@@ -27,7 +43,7 @@ const CustomHeader = ({ navigation, firstName }) => {
 
         <View style={styles.rightSection}>
           <Ionicons
-            name="power-outline" // Use a logout icon
+            name="power-outline"
             size={28}
             color={colors.textSecondary}
             onPress={() => navigation.navigate('Login')}
