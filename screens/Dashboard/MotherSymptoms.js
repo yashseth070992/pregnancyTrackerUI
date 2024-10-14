@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { globalStyles } from '../../styles/globalStyles';
 import { symptomsData } from './data/symptomsData';
-import ListItem from '../../components/ListItem'; // Import the new generic ListItem
+import ListItem from '../../components/ListItem'; // Import the ListItem component
 
 const MotherSymptoms = ({ week }) => {
   const symptoms = symptomsData[week] || symptomsData[4];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Import Ionicons
+import { Ionicons } from '@expo/vector-icons'; // Import Ionicons for icons
 import { globalStyles } from '../styles/globalStyles';
 
 const ListItem = ({ icon, text }) => (

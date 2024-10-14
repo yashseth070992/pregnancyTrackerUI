@@ -15,21 +15,22 @@ function MainDrawer({ route }) {
   const { email } = route.params; // Get the email from route params
 
   return (
-    <Drawer.Navigator initialRouteName="Home"
-    screenOptions={{
-      drawerStyle: {
-        backgroundColor: colors.backgroundPrimary, // Set drawer background color
-        borderColor: colors.borderPrimary, // Set border color for drawer
-      },
-      drawerLabelStyle: {
-        color: colors.textPrimary, // Text color inside the drawer
-      },
-      drawerContentOptions: {
-        activeTintColor: colors.buttonTextSecondary, // Active item text color
-        inactiveTintColor: colors.textPrimary, // Inactive item text color
-      },
-    }}
-  >
+    <Drawer.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        drawerStyle: {
+          backgroundColor: colors.backgroundPrimary, // Set drawer background color
+          borderColor: colors.borderPrimary, // Set border color for drawer
+        },
+        drawerLabelStyle: {
+          color: colors.textPrimary, // Text color inside the drawer
+        },
+        drawerContentOptions: {
+          activeTintColor: colors.buttonTextSecondary, // Active item text color
+          inactiveTintColor: colors.textPrimary, // Inactive item text color
+        },
+      }}
+    >
       <Drawer.Screen
         name="Home"
         component={Dashboard}
